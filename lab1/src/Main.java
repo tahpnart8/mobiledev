@@ -3,13 +3,6 @@
 public class Main {
     public static void main(String[] args) {
         int count = 100;
-        if (args.length > 0) {
-            try {
-                count = Integer.parseInt(args[0]);
-            } catch (NumberFormatException e) {
-                System.out.println("Tham số không hợp lệ, dùng giá trị mặc định count = 1000");
-            }
-        }
 
         AStats stats = new Statistic();
         stats.generateRandomNumbers(count);

@@ -35,7 +35,7 @@ public class GraphicsA {
         }
 
         int maxBarLength = 50;
-        System.out.println("\nBiểu đồ phân bố tần suất (dạng văn bản):");
+        System.out.println("\nBiểu đồ phân bố tần suất:");
         for (int bucketIndex = 0; bucketIndex < frequencies.length; bucketIndex++) {
             String label = String.format("[%.1f - %.1f)", bucketIndex * 0.1, (bucketIndex + 1) * 0.1);
             int barLength = (int) Math.round((double) frequencies[bucketIndex] / maxCount * maxBarLength);

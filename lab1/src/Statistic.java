@@ -8,7 +8,6 @@ public class Statistic extends AStats {
     public double[] generateRandomNumbers(int count) {
         Random randomGenerator = new Random();
         data = new double[count];
-
         for (int index = 0; index < count; index++) {
             data[index] = randomGenerator.nextDouble();
         }
@@ -17,22 +16,17 @@ public class Statistic extends AStats {
 
     @Override
     public double mean() {
-        requireData();
         double sum = 0.0;
-
         for (double value : data) {
             sum += value;
         }
-
         return sum / data.length;
     }
 
     @Override
     public double variance() {
-        this.requireData();
         double meanValue = mean();
         double sum = 0.0;
-
         for (double value : data) {
             sum += (value - meanValue) * (value - meanValue);
         }
@@ -41,7 +35,6 @@ public class Statistic extends AStats {
 
     @Override
     public double median() {
-        requireData();
         double[] sortedData = data.clone();
         Arrays.sort(sortedData);
         int size = sortedData.length;
@@ -53,7 +46,6 @@ public class Statistic extends AStats {
 
     @Override
     public int[] freq(){
-        requireData();
         int[] bucketCounts = new int[10];
         for (double value : data){
             int bucketIndex = (int) (value*10);
@@ -63,15 +55,5 @@ public class Statistic extends AStats {
             bucketCounts[bucketIndex]++;
         }
         return bucketCounts;
-    }
-
-    public double[] getData(){
-        return this.data;
-    }
-
-    public void requireData() {
-        if (this.data == null) {
-            throw new IllegalStateException("Data not found");
-        }
     }
 }

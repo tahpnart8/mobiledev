@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/GridLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:columnCount="2"
+    android:rowCount="6"
+    android:padding="16dp"
+    android:useDefaultMargins="true"
+    tools:context=".RegisterActivity">
+
+    <TextView
+        android:layout_row="0"
+        android:layout_column="1"
+        android:layout_gravity="center_horizontal"
+        android:text="REGISTER                           "
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_row="1"
+        android:layout_column="0"
+        android:layout_gravity="center_horizontal"
+        android:text="Name:" />
+
+
+    <EditText
+        android:layout_row="1"
+        android:layout_column="1"
+        android:layout_width="220dp"
+        android:hint="Tran Duc Phat" />
+
+    <TextView
+        android:layout_row="2"
+        android:layout_column="0"
+        android:layout_gravity="center_horizontal"
+        android:text="Age:" />
+
+    <LinearLayout
+        android:layout_row="2"
+        android:layout_column="1"
+        android:layout_width="220dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0" />
+
+        <SeekBar
+            android:id="@+id/seekBar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:max="100"
+            android:progress="0" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="100" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_row="3"
+        android:layout_column="0"
+        android:layout_gravity="center_horizontal"
+        android:text="Gender:" />
+
+    <Switch
+        android:id="@+id/Switch"
+        android:layout_row="3"
+        android:layout_column="1"
+        android:textOff="M"
+        android:textOn="F" />
+
+    <!-- Hang 3: Hobby (Spinner - thanh chon) -->
+    <TextView
+        android:layout_row="4"
+        android:layout_column="0"
+        android:layout_gravity="center_horizontal"
+        android:text="Hobby:" />
+
+    <Spinner
+        android:id="@+id/Spinner"
+        android:layout_row="4"
+        android:layout_column="1"
+        android:layout_width="220dp"
+        android:entries="@array/hobby_array" />
+
+    <LinearLayout
+        android:layout_width="217dp"
+        android:layout_height="wrap_content"
+        android:layout_row="5"
+        android:layout_column="1"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="102dp"
+            android:layout_height="wrap_content"
+            android:paddingRight="24dp"
+            android:text="Register" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="95dp"
+            android:layout_height="wrap_content"
+            android:text="Cancel" />
+    </LinearLayout>
+
+</GridLayout>

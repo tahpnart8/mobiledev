@@ -49,9 +49,6 @@ public class Statistic extends AStats {
         int[] bucketCounts = new int[10];
         for (double value : data){
             int bucketIndex = (int) (value*10);
-            if (bucketIndex == 10) {
-                bucketIndex = 9;
-            }
             bucketCounts[bucketIndex]++;
         }
         return bucketCounts;

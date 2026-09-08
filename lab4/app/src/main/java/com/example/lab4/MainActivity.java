@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -15,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
     CompoundButton swGender;
     Spinner spHobby;
     CheckBox cbHigh, cbMedium, cbLow;
+
+    // danh sach nhan vien da dang ky, gui sang man hinh 2 qua Intent
+    ArrayList<Employee> employees = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,33 +83,66 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        swGender.setOnCheckedChangeListener((v, checked) ->
-                swGender.setText(getString(checked ? R.string.male : R.string.female)));
+        swGender.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                swGender.setText(getString(isChecked ? R.string.male : R.string.female));
+            }
+        });
 
         // 3 checkbox trinh do chi duoc tick 1 o
-        cbHigh.setOnCheckedChangeListener((v, checked) -> {
-            if (checked) {
-                cbMedium.setChecked(false);
-                cbLow.setChecked(false);
-            }
-        });
-        cbMedium.setOnCheckedChangeListener((v, checked) -> {
-            if (checked) {
-                cbHigh.setChecked(false);
-                cbLow.setChecked(false);
-            }
-        });
-        cbLow.setOnCheckedChangeListener((v, checked) -> {
-            if (checked) {
-                cbHigh.setChecked(false);
-                cbMedium.setChecked(false);
+        cbHigh.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    cbMedium.setChecked(false);
+                    cbLow.setChecked(false);
+                }
             }
         });
 
-        findViewById(R.id.btnRegister).setOnClickListener(v -> register());
-        findViewById(R.id.btnCancel).setOnClickListener(v -> clearForm());
-        findViewById(R.id.btnShow).setOnClickListener(v ->
-                startActivity(new Intent(this, ListActivity.class)));
+        cbMedium.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    cbHigh.setChecked(false);
+                    cbLow.setChecked(false);
+                }
+            }
+        });
+
+        cbLow.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    cbHigh.setChecked(false);
+                    cbMedium.setChecked(false);
+                }
+            }
+        });
+
+        findViewById(R.id.btnRegister).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                register();
+            }
+        });
+
+        findViewById(R.id.btnCancel).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clearForm();
+            }
+        });
+
+        findViewById(R.id.btnShow).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ListActivity.class);
+                intent.putExtra(ListActivity.EXTRA_EMPLOYEES, employees);
+                startActivity(intent);
+            }
+        });
     }
 
     // ngay sinh go tay nen phai kiem tra dung dd/MM/yyyy va co that (chan 31/02/2000)
@@ -149,7 +187,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         String hobby = spHobby.getSelectedItem().toString();
-        EmployeeManager.add(new Employee(name, dob, swGender.isChecked(), hobby, elevel));
+        employees.add(new Employee(name, dob, swGender.isChecked(), hobby, elevel));
         toast(R.string.msg_added);
         clearForm();
     }

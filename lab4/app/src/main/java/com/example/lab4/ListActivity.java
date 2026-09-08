@@ -2,13 +2,17 @@ package com.example.lab4;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.View;
 import android.webkit.WebView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ListActivity extends AppCompatActivity {
+
+    public static final String EXTRA_EMPLOYEES = "employees";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,12 +22,27 @@ public class ListActivity extends AppCompatActivity {
         WebView webView = findViewById(R.id.webView);
         webView.loadDataWithBaseURL(null, buildHtml(), "text/html", "UTF-8", null);
 
-        findViewById(R.id.btnBack).setOnClickListener(v -> finish());
+        findViewById(R.id.btnBack).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
+
+    // Lay danh sach nhan vien do man hinh 1 gui kem trong Intent
+    @SuppressWarnings("unchecked")
+    private List<Employee> getEmployeesFromIntent() {
+        List<Employee> list = (List<Employee>) getIntent().getSerializableExtra(EXTRA_EMPLOYEES);
+        if (list == null) {
+            list = new ArrayList<>();
+        }
+        return list;
     }
 
     // Dung chuoi HTML dang bang tu danh sach nhan vien
     private String buildHtml() {
-        List<Employee> employees = EmployeeManager.getAll();
+        List<Employee> employees = getEmployeesFromIntent();
         StringBuilder html = new StringBuilder();
 
         html.append("<html><head><meta charset='UTF-8'>")

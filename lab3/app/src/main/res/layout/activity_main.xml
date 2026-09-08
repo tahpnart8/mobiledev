@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="12dp"
+    tools:context=".MainActivity">
+
+    <!-- tieu de -->
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Chọn số tăng dần"
+        android:textColor="@color/textDark"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- hang tren: nhap n + nut random -->
+    <EditText
+        android:id="@+id/edtN"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="8dp"
+        android:hint="Nhap n"
+        android:inputType="number"
+        app:layout_constraintEnd_toStartOf="@id/btnRandom"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+    <Button
+        android:id="@+id/btnRandom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Random"
+        app:layout_constraintBottom_toBottomOf="@id/edtN"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/edtN" />
+
+    <!-- guideline chia luoi 3x3 -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineV1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.33" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineV2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.66" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineH1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.4" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineH2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.65" />
+
+    <!-- hang duoi luoi: time + fails, dang badge -->
+    <TextView
+        android:id="@+id/tvTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@drawable/badge_bg"
+        android:text="Time: 0s"
+        android:textColor="@color/textDark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvFails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@drawable/badge_bg"
+        android:text="Fails: 0"
+        android:textColor="@color/textDark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- o 0: hang 1 cot 1 -->
+    <FrameLayout
+        android:id="@+id/frameCell0"
+        android:layout_width="82dp"
+        android:layout_height="82dp"
+        android:layout_margin="5dp"
+        app:layout_constraintBottom_toTopOf="@id/guidelineH1"
+        app:layout_constraintEnd_toStartOf="@id/guidelineV1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edtN">
+
+        <Button
+            android:id="@+id/btnCell0"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/cell_bg"
+            android:foreground="?attr/selectableItemBackground"
+            android:text="0"
+            android:textColor="@color/textDark"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/xCell0"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="X"
+            android:textColor="@color/xRed"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <!-- o 1: hang 1 cot 2 -->
+    <FrameLayout
+        android:id="@+id/frameCell1"
+        android:layout_width="82dp"
+        android:layout_height="82dp"
+        android:layout_margin="5dp"
+        app:layout_constraintTop_toBottomOf="@id/edtN"
+        app:layout_constraintBottom_toTopOf="@id/guidelineH1"
+        app:layout_constraintStart_toStartOf="@id/guidelineV1"
+        app:layout_constraintEnd_toStartOf="@id/guidelineV2">
+
+        <Button
+            android:id="@+id/btnCell1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/cell_bg"
+            android:foreground="?attr/selectableItemBackground"
+            android:text="0"
+            android:textColor="@color/textDark"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/xCell1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="X"
+            android:textColor="@color/xRed"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <!-- o 2: hang 1 cot 3 -->
+    <FrameLayout
+        android:id="@+id/frameCell2"
+        android:layout_width="82dp"
+        android:layout_height="82dp"
+        android:layout_margin="5dp"
+        app:layout_constraintTop_toBottomOf="@id/edtN"
+        app:layout_constraintBottom_toTopOf="@id/guidelineH1"
+        app:layout_constraintStart_toStartOf="@id/guidelineV2"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+            android:id="@+id/btnCell2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/cell_bg"
+            android:foreground="?attr/selectableItemBackground"
+            android:text="0"
+            android:textColor="@color/textDark"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/xCell2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="X"
+            android:textColor="@color/xRed"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <!-- o 3: hang 2 cot 1 -->
+    <FrameLayout
+        android:id="@+id/frameCell3"
+        android:layout_width="82dp"
+        android:layout_height="82dp"
+        android:layout_margin="5dp"
+        app:layout_constraintBottom_toTopOf="@id/guidelineH2"
+        app:layout_constraintEnd_toStartOf="@id/guidelineV1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guidelineH1">
+
+        <Button
+            android:id="@+id/btnCell3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/cell_bg"
+            android:foreground="?attr/selectableItemBackground"
+            android:text="0"
+            android:textColor="@color/textDark"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/xCell3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="X"
+            android:textColor="@color/xRed"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <!-- o 4: hang 2 cot 2 -->
+    <FrameLayout
+        android:id="@+id/frameCell4"
+        android:layout_width="82dp"
+        android:layout_height="82dp"
+        android:layout_margin="5dp"
+        app:layout_constraintTop_toBottomOf="@id/guidelineH1"
+        app:layout_constraintBottom_toTopOf="@id/guidelineH2"
+        app:layout_constraintStart_toStartOf="@id/guidelineV1"
+        app:layout_constraintEnd_toStartOf="@id/guidelineV2">
+
+        <Button
+            android:id="@+id/btnCell4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/cell_bg"
+            android:foreground="?attr/selectableItemBackground"
+            android:text="0"
+            android:textColor="@color/textDark"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/xCell4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="X"
+            android:textColor="@color/xRed"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <!-- o 5: hang 2 cot 3 -->
+    <FrameLayout
+        android:id="@+id/frameCell5"
+        android:layout_width="82dp"
+        android:layout_height="82dp"
+        android:layout_margin="5dp"
+        app:layout_constraintTop_toBottomOf="@id/guidelineH1"
+        app:layout_constraintBottom_toTopOf="@id/guidelineH2"
+        app:layout_constraintStart_toStartOf="@id/guidelineV2"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+            android:id="@+id/btnCell5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/cell_bg"
+            android:foreground="?attr/selectableItemBackground"
+            android:text="0"
+            android:textColor="@color/textDark"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/xCell5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="X"
+            android:textColor="@color/xRed"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <!-- o 6: hang 3 cot 1 -->
+    <FrameLayout
+        android:id="@+id/frameCell6"
+        android:layout_width="82dp"
+        android:layout_height="82dp"
+        android:layout_margin="5dp"
+        app:layout_constraintTop_toBottomOf="@id/guidelineH2"
+        app:layout_constraintBottom_toTopOf="@id/tvTime"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/guidelineV1">
+
+        <Button
+            android:id="@+id/btnCell6"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/cell_bg"
+            android:foreground="?attr/selectableItemBackground"
+            android:text="0"
+            android:textColor="@color/textDark"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/xCell6"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="X"
+            android:textColor="@color/xRed"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <!-- o 7: hang 3 cot 2 -->
+    <FrameLayout
+        android:id="@+id/frameCell7"
+        android:layout_width="82dp"
+        android:layout_height="82dp"
+        android:layout_margin="5dp"
+        app:layout_constraintTop_toBottomOf="@id/guidelineH2"
+        app:layout_constraintBottom_toTopOf="@id/tvTime"
+        app:layout_constraintStart_toStartOf="@id/guidelineV1"
+        app:layout_constraintEnd_toStartOf="@id/guidelineV2">
+
+        <Button
+            android:id="@+id/btnCell7"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/cell_bg"
+            android:foreground="?attr/selectableItemBackground"
+            android:text="0"
+            android:textColor="@color/textDark"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/xCell7"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="X"
+            android:textColor="@color/xRed"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <!-- o 8: hang 3 cot 3 -->
+    <FrameLayout
+        android:id="@+id/frameCell8"
+        android:layout_width="82dp"
+        android:layout_height="82dp"
+        android:layout_margin="5dp"
+        app:layout_constraintTop_toBottomOf="@id/guidelineH2"
+        app:layout_constraintBottom_toTopOf="@id/tvTime"
+        app:layout_constraintStart_toStartOf="@id/guidelineV2"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+            android:id="@+id/btnCell8"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/cell_bg"
+            android:foreground="?attr/selectableItemBackground"
+            android:text="0"
+            android:textColor="@color/textDark"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/xCell8"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="X"
+            android:textColor="@color/xRed"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

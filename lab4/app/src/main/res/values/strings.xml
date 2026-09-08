@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">lab4</string>
+
+    <string name="male">Nam</string>
+    <string name="female">Nữ</string>
+    <string name="empty_list">Chưa có nhân viên nào</string>
+    <string name="msg_name_empty">Vui lòng nhập tên</string>
+    <string name="msg_dob_empty">Vui lòng chọn ngày sinh</string>
+    <string name="msg_dob_invalid">Ngày sinh phải đúng dạng dd/MM/yyyy</string>
+    <string name="msg_elevel_empty">Vui lòng chọn trình độ tiếng Anh</string>
+    <string name="msg_added">Đã thêm nhân viên</string>
+
+    <string-array name="hobby_array">
+        <item>Sport</item>
+        <item>Music</item>
+        <item>Movie</item>
+        <item>Reading</item>
+        <item>Travel</item>
+        <item>Photography</item>
+        <item>Gaming</item>
+        <item>Cooking</item>
+        <item>Dancing</item>
+        <item>Drawing</item>
+        <item>Swimming</item>
+        <item>Shopping</item>
+        <item>Other</item>
+    </string-array>
+</resources>

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="20dp"
+    android:padding="14dp"
     tools:context=".ListActivity">
 
     <TextView
@@ -31,7 +31,7 @@
         android:background="@drawable/card_bg"
         android:elevation="2dp"
         android:orientation="vertical"
-        android:padding="6dp">
+        android:padding="4dp">
 
         <WebView
             android:id="@+id/webView"

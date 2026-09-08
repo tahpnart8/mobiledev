@@ -3,6 +3,7 @@
 
     <string name="male">Nam</string>
     <string name="female">Nữ</string>
+    <string name="total_employees">Tổng: %1$d nhân viên</string>
     <string name="empty_list">Chưa có nhân viên nào</string>
     <string name="msg_name_empty">Vui lòng nhập tên</string>
     <string name="msg_dob_empty">Vui lòng chọn ngày sinh</string>

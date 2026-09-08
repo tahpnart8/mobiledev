@@ -3,7 +3,7 @@ package com.example.lab4;
 import java.util.ArrayList;
 import java.util.List;
 
-// Giu danh sach nhan vien trong RAM, dung chung cho 2 man hinh
+// Giu danh sach nhan vien trong RAM (static), 2 man hinh dung chung
 public class EmployeeManager {
 
     private static final List<Employee> employees = new ArrayList<>();

@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">lab6</string>
+    <string name="open_drawer">Mở danh sách lớp</string>
+    <string name="close_drawer">Đóng danh sách lớp</string>
+</resources>

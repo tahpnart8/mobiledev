@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="primary">#0F766E</color>
+    <color name="primaryDark">#115E59</color>
+    <color name="onPrimary">#FFFFFF</color>
+    <color name="background">#F1F5F9</color>
+    <color name="cardStroke">#CBD5E1</color>
+    <color name="selectedItem">#CCFBF1</color>
+    <color name="textDark">#1E293B</color>
+    <color name="textLabel">#475569</color>
+</resources>

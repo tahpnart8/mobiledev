@@ -2,10 +2,9 @@ package com.example.lab6;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
-import android.widget.ListView;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -24,9 +23,9 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
-    ListView lvClass;
+    LinearLayout classList;
     TextView tvClassName, tvTeacher;
-    LinearLayout studentList;
+    TableLayout studentTable;
 
     ArrayList<ClassInfo> classes = new ArrayList<>();
 
@@ -36,10 +35,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         drawerLayout = findViewById(R.id.drawerLayout);
-        lvClass = findViewById(R.id.lvClass);
+        classList = findViewById(R.id.classList);
         tvClassName = findViewById(R.id.tvClassName);
         tvTeacher = findViewById(R.id.tvTeacher);
-        studentList = findViewById(R.id.studentList);
+        studentTable = findViewById(R.id.studentTable);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Lab 6 - Danh sách lớp");
@@ -63,24 +62,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
         createData();
-
-        ArrayList<String> classNames = new ArrayList<>();
-        for (int i = 0; i < classes.size(); i++) {
-            classNames.add(classes.get(i).getName());
-        }
-
-        lvClass.setAdapter(new ArrayAdapter<String>(this, R.layout.item_class, classNames));
-        lvClass.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-        lvClass.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                showClass(position);
-                drawerLayout.closeDrawer(GravityCompat.START);
-            }
-        });
+        buildClassList();
 
         // mo len chon san lop dau tien
-        lvClass.setItemChecked(0, true);
         showClass(0);
     }
 
@@ -109,6 +93,26 @@ public class MainActivity extends AppCompatActivity {
         classes.add(new ClassInfo("A04", "Phạm Văn Hùng", a04));
     }
 
+    // do danh sach lop vao ngan keo
+    private void buildClassList() {
+        for (int i = 0; i < classes.size(); i++) {
+            final int position = i;
+
+            TextView row = (TextView) getLayoutInflater()
+                    .inflate(R.layout.item_class, classList, false);
+            row.setText(classes.get(i).getName());
+            row.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showClass(position);
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                }
+            });
+
+            classList.addView(row);
+        }
+    }
+
     // do thong tin lop dang chon ra khung noi dung
     private void showClass(int position) {
         ClassInfo classInfo = classes.get(position);
@@ -117,7 +121,16 @@ public class MainActivity extends AppCompatActivity {
         tvTeacher.setText("Chủ nhiệm: " + classInfo.getTeacher()
                 + "  •  Sĩ số: " + classInfo.getStudents().size());
 
-        studentList.removeAllViews();
+        // to sang lop dang chon trong ngan keo
+        for (int i = 0; i < classList.getChildCount(); i++) {
+            classList.getChildAt(i).setActivated(i == position);
+        }
+
+        // xoa cac dong cu, giu lai dong tieu de dau bang
+        if (studentTable.getChildCount() > 1) {
+            studentTable.removeViews(1, studentTable.getChildCount() - 1);
+        }
+
         ArrayList<Student> students = classInfo.getStudents();
         for (int i = 0; i < students.size(); i++) {
             addStudentRow(students.get(i), i);
@@ -125,7 +138,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addStudentRow(Student student, int position) {
-        View row = getLayoutInflater().inflate(R.layout.item_student_row, studentList, false);
+        TableRow row = (TableRow) getLayoutInflater()
+                .inflate(R.layout.item_student_row, studentTable, false);
 
         ((TextView) row.findViewById(R.id.tvStudentId)).setText(student.getId());
         ((TextView) row.findViewById(R.id.tvStudentName)).setText(student.getName());
@@ -135,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
             row.setBackgroundColor(0xFFF8FAFC);
         }
 
-        studentList.addView(row);
+        studentTable.addView(row);
     }
 
     // bam Back khi ngan keo dang mo thi dong ngan keo truoc

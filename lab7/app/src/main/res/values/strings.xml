@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">lab7</string>
+    <string name="views_format">Views: %1$d</string>
 </resources>

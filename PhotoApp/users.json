@@ -1,0 +1,52 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "Nguyễn Văn An",
+      "email": "an.nguyen@example.com",
+      "description": "Sinh viên năm 3 ngành Công nghệ thông tin, thích tìm hiểu về phát triển ứng dụng di động.",
+      "avatar_url": "https://i.pravatar.cc/300?img=11",
+      "hobby": "Đọc sách"
+    },
+    {
+      "id": 2,
+      "username": "Trần Thị Bình",
+      "email": "binh.tran@example.com",
+      "description": "Yêu thích thiết kế giao diện và trải nghiệm người dùng cho ứng dụng Android.",
+      "avatar_url": "https://i.pravatar.cc/300?img=5",
+      "hobby": "Vẽ tranh"
+    },
+    {
+      "id": 3,
+      "username": "Lê Văn Cường",
+      "email": "cuong.le@example.com",
+      "description": "Đam mê bóng đá, thường xuyên tham gia các giải đấu phong trào của trường.",
+      "avatar_url": "https://i.pravatar.cc/300?img=12",
+      "hobby": "Bóng đá"
+    },
+    {
+      "id": 4,
+      "username": "Phạm Thị Dung",
+      "email": "dung.pham@example.com",
+      "description": "Thích nấu ăn và chia sẻ công thức nấu ăn cho bạn bè trong lớp.",
+      "avatar_url": "https://i.pravatar.cc/300?img=9",
+      "hobby": "Nấu ăn"
+    },
+    {
+      "id": 5,
+      "username": "Hoàng Văn Em",
+      "email": "em.hoang@example.com",
+      "description": "Chơi guitar trong ban nhạc của trường, thích âm nhạc acoustic.",
+      "avatar_url": "https://i.pravatar.cc/300?img=15",
+      "hobby": "Chơi guitar"
+    },
+    {
+      "id": 6,
+      "username": "Vũ Thị Phương",
+      "email": "phuong.vu@example.com",
+      "description": "Thích du lịch khám phá các vùng đất mới vào mỗi kỳ nghỉ hè.",
+      "avatar_url": "https://i.pravatar.cc/300?img=20",
+      "hobby": "Du lịch"
+    }
+  ]
+}
